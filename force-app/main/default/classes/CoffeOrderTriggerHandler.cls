@@ -16,7 +16,7 @@ public with sharing class CoffeOrderTriggerHandler {
             return;
         }
 
-        List<Coffee_Order__c> coffeeOrders = this.newCoffeeOrders;
+        List<Coffee_Order__c> coffeeOrders = newCoffeeOrders;
         for(Integer i=0; i < coffeeOrders.size(); i++){
             Coffee_Order__c co = newCoffeeOrders[i];
             Coffee_Order__c oldco = oldCoffeeOrders == null ? null : oldCoffeeOrders[i];
