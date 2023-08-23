@@ -6,8 +6,8 @@ public with sharing class CoffeOrderTriggerHandler {
     public CoffeOrderTriggerHandler() {}
 
     public CoffeOrderTriggerHandler(List<Coffee_Order__c> newCofOrdrs, List<Coffee_Order__c> oldCofOrdrs){
-        this.newCoffeeOrders = newCofOrdrs;
-        this.oldCoffeeOrders = oldCofOrdrs;
+        newCoffeeOrders = newCofOrdrs;
+        oldCoffeeOrders = oldCofOrdrs;
     }
 
     public void run(){
@@ -18,9 +18,9 @@ public with sharing class CoffeOrderTriggerHandler {
 
         List<Coffee_Order__c> coffeeOrders = this.newCoffeeOrders;
         for(Integer i=0; i < coffeeOrders.size(); i++){
-            Coffee_Order__c co = this.newCoffeeOrders[i];
-            Coffee_Order__c oldco = this.oldCoffeeOrders == null ? null : this.oldCoffeeOrders[i];
-            co = this.receivedOrderTotal(co, oldco);
+            Coffee_Order__c co = newCoffeeOrders[i];
+            Coffee_Order__c oldco = oldCoffeeOrders == null ? null : oldCoffeeOrders[i];
+            co = receivedOrderTotal(co, oldco);
         }
     }
 
