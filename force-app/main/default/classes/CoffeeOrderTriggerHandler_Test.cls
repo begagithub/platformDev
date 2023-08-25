@@ -43,6 +43,6 @@ public without sharing class CoffeeOrderTriggerHandler_Test {
         Order_Total__c FROM Coffee_Order__c
         WHERE Id =:verifyInsertedCofOrdrforUpdate.Id];
 
-        Assert.isNotNull(verifyInsertedCofOrdrforUpdate.Received_Order_Total__c, ASSERTION_MESSAGE);
+        Assert.isNotNull(cofOrdrUpdated.Received_Order_Total__c, ASSERTION_MESSAGE);
     }
 }
