@@ -7,7 +7,7 @@ trigger CaseSummary on Case (before insert, before update, after insert, after u
             if(cs.Product_Total_Warranty_Days__c==null){
                 daysPercent = 100;
             }else{
-                daysPercent = noOfDays/(cs.Product_Total_Warranty_Days__c)*100;
+                daysPercent = (noOfDays/(cs.Product_Total_Warranty_Days__c)*100).setscale(2);
             }
             cs.Warranty_Summary__c = 'Product purchased on '+cs.Product_Purchase_Date__c+' and case created on '
                                     +cs.CreatedDate+'. Warranty is for '+cs.Product_Total_Warranty_Days__c+' days and is '
