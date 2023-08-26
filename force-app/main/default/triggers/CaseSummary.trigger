@@ -1,7 +1,8 @@
 trigger CaseSummary on Case (before insert, before update, after insert, after update) {
     if((Trigger.isUpdate && Trigger.isAfter)||(Trigger.isInsert && Trigger.isAfter)){
         for(Case cs: Trigger.New){
-            Integer noOfDays = Date.today().daysBetween(cs.CreatedDate.Date());
+            Date purchaseDate = cs.Product_Purchase_Date__c;
+            Integer noOfDays = (Date.today()-purchaseDate);
             Decimal daysPercent;
             if(cs.Product_Total_Warranty_Days__c==null){
                 daysPercent = 100;
