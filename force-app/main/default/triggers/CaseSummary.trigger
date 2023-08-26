@@ -1,5 +1,5 @@
 trigger CaseSummary on Case (before insert, before update, after insert, after update) {
-    if((Trigger.isUpdate && Trigger.isBefore)||(Trigger.isInsert && Trigger.isBefore)){
+    if(Trigger.isInsert && Trigger.isBefore) {
         for(Case cs: Trigger.New){
             Date purchaseDate = cs.Product_Purchase_Date__c;
             Integer noOfDays = purchaseDate.daysBetween(Date.Today());   //(Date.today()-purchaseDate);
