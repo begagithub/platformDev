@@ -16,9 +16,9 @@ trigger LeadingCompetitorTrigger on Opportunity (before insert, after insert, be
             Decimal leastCompPrice = compPrices[0];
 
             for(Decimal reorderedCompPrice: compPrices){
-                if(myTriggerOpp.Competitor_1_Price__c.intValue() == leastCompPrice){
+                if(myTriggerOpp.Competitor_1_Price__c == leastCompPrice){
                     myTriggerOpp.Leading_Competitor__c = myTriggerOpp.Competitor_1__c;
-                } else if(myTriggerOpp.Competitor_2_Price__c.intValue() == leastCompPrice){
+                } else if(myTriggerOpp.Competitor_2_Price__c == leastCompPrice){
                     myTriggerOpp.Leading_Competitor__c = myTriggerOpp.Competitor_2__c;
                 } else {
                     myTriggerOpp.Leading_Competitor__c = myTriggerOpp.Competitor_3__c;
