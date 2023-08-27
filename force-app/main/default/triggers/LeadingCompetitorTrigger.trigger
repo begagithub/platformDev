@@ -16,18 +16,27 @@ trigger LeadingCompetitorTrigger on Opportunity (before insert, after insert, be
 
             //Loop through all competitor prices and find the position of the lowest competitor price**
             Decimal lowestCompPrice;
+            Decimal highestCompPrice;
             Integer lowestPricePosition;
+            Integer highestPricePosition;
             for(Integer i=0; i<compPrices.size(); i++){
                 if(lowestCompPrice==null || compPrices[i]<lowestCompPrice){
-                    lowestCompPrice = compPrices[i];
-                    lowestPricePosition=i;
+                    lowestCompPrice         = compPrices[i];
+                    lowestPricePosition     = i;
                     //myTriggerOpp.Leading_Competitor__c = competitors[i]; ==> Can we do this instead of other logic?
+                }
+                if(highestCompPrice==null || compPrices[i]>highestCompPrice){
+                    highestCompPrice        = compPrices[i];
+                    highestPricePosition    = i;
                 }
             }
 
             //Populate the leading competitor field with the competitor matching the lowest price position
-            myTriggerOpp.Leading_Competitor__c = competitors[lowestPricePosition];
+            myTriggerOpp.Leading_Competitor__c          = competitors[lowestPricePosition];
+            myTriggerOpp.Leading_Competitor_Price__c    = compPrices[lowestPricePosition];
 
+            myTriggerOpp.Most_Expensive_Competitor__c       = competitors[highestPricePosition];
+            myTriggerOpp.Most_Expensive_Competitor_Price__c = compPrices[highestPricePosition];
             /*
             Decimal compPriceOne        = myTriggerOpp.Competitor_1_Price__c;
             Decimal compPriceTwo        = myTriggerOpp.Competitor_2_Price__c;
