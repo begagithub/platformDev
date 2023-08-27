@@ -3,7 +3,7 @@ trigger LeadingCompetitorTrigger on Opportunity (before insert, after insert, be
 
         for(Opportunity myTriggerOpp: Trigger.New){
             
-            List<Integer> compPrices;
+            List<Integer> compPrices = new List<Integer>();
             Integer compPriceOne        = myTriggerOpp.Competitor_1_Price__c.intValue();
             Integer compPriceTwo        = myTriggerOpp.Competitor_2_Price__c.intValue();
             Integer compPriceThree      = myTriggerOpp.Competitor_3_Price__c.intValue();
