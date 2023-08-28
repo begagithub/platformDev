@@ -42,5 +42,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adam17amo/platformdev"
+  },
+  "dependencies": {
+    "sfdx-cli": "^7.209.6"
   }
 }
